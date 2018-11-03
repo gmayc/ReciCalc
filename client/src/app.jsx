@@ -44,6 +44,7 @@ class App extends Component {
     });
   }
 
+
   setUser(user, id, token) {
     this.setState({
       token: token,

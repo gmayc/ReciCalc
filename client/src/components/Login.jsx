@@ -3,8 +3,16 @@ import React from 'react';
 import axios from 'axios';
 import { withFormik, Form, Field } from 'formik';
 
+// window.onload = function() {
+//   if(!window.location.hash) {
+//       window.location = window.location + '#loaded';
+//       window.location.reload();
+//   }
+// } 
+
 const Login = () => (
   <div className="ui middle aligned center aligned grid" id="login-signup">
+  {/* {window.onload()} */}
     <div className="column">
       <h2 className="ui header">
         <div className="content">Log-in to your account</div>
@@ -52,6 +60,8 @@ const Login = () => (
     </div>
   </div>
 );
+
+
 
 const FormikApp = withFormik({
   mapPropsToValues({ username, password, history, setUser }) {

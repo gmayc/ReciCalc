@@ -21,8 +21,11 @@ class Account extends Component {
   }
 
   componentDidMount(){
-
+    this.setState({
+      token: localStorage.getItem('Token')
+    });
   }
+
 
 
   changeUser(newUsername, password) {
@@ -34,8 +37,7 @@ class Account extends Component {
     .then((data) => {
       console.log(data);
 
-      localStorage.clear();
-      sessionStorage.clear();
+      this.props.logout();
       this.setState({
         token: null,
         userId: null,
@@ -44,7 +46,8 @@ class Account extends Component {
         password: '',
         activeItem: ''
       });
-      this.props.history.push('/login');
+      alert('Username changed successfuly, log in with new username');
+      this.props.history.push('/');
     })
     .catch((err) => {
       let parsed = JSON.stringify(err);
@@ -68,7 +71,7 @@ class Account extends Component {
     .then((data) => {
       console.log(data);
       alert(data.data);
-
+      this.props.history.push('/create');
     })
     .catch((err) => {
       let parsed = JSON.stringify(err);
